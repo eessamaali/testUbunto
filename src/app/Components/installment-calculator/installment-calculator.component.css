@@ -1,0 +1,16 @@
+@import url('https://unpkg.com/bootstrap@3.3.7/dist/css/bootstrap.min.css');
+.error {
+    color:  red;
+}
+.logo{
+    float:right
+}
+.header {
+    text-align: center;
+    padding: 7% 0 2% 0 ;
+}
+button {
+    text-align: center;
+    float: right;
+    margin: 2% 0 5% 0;
+}

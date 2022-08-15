@@ -1,0 +1,64 @@
+
+<div class="container">
+
+    <img src="../../../assets/blackNightLogo.png" class="img-fluid logo" alt="black Night" width="225vw" height="45vh" >
+
+   <h1 class="header">Installment Calculation</h1>
+    <form #installmentForm="ngForm" [formGroup]="form">
+      
+        <div class="form-group">  
+            <label for="gross">Enter Gross:</label>  
+            <input #inputGross class="form-control" name="gross" 
+            placeholder="Enter gross amount"
+            formControlName="gross"
+            >
+            <!-- display the error if invalid input -->
+            <p *ngIf="errorState" class="error">{{errorMessage}}</p> 
+        </div>
+        <div class="form-group">
+            
+            <!-- <mat-form-field >
+            <mat-label>Select number of installments:</mat-label>
+            <mat-select formControlName="numberOfInstallment" > 
+              <mat-option *ngFor="let numberOfInstallment of installments" [value]="numberOfInstallment">{{numberOfInstallment}}</mat-option>
+            </mat-select>
+          </mat-form-field> -->
+
+          <label for="installment">Select number of installments: </label>
+            <select class="form-control" formControlName="numberOfInstallment" >
+                <option value="">Select number of Installments</option>
+              <option *ngFor="let numberOfInstallment of installments"  
+              [value]="numberOfInstallment" name="numberOfInstallment"
+             >{{numberOfInstallment}} 
+              
+            </option>
+            </select>
+        </div>
+       <button type="button" (click)="onCalc()" class="btn btn-primary" [disabled]="numberOfInstallment==0 || errorMessage">Calculate the Installment</button>
+    </form>
+
+    <!-- table to display installments details -->
+    <table class="table table-bordered table-responsive">
+        <thead>
+          <tr>
+            <th scope="row">Amount</th>
+            <th scope="row">Installments</th>
+            <th scope="col">Installment 1</th>
+            <th scope="col">Installment 2</th>
+            <th scope="col">Installment 3</th>
+            <th scope="col">Installment 4</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">{{gross | currency}}</th>
+            <td>{{numberOfInstallment}}</td>
+            <td>{{firstInstallment | currency}}</td>
+            <td>{{secondInstallment | currency}}</td>
+            <td>{{thirdInstallment | currency}}</td>
+            <td>{{fourthInstallment | currency}}</td>
+          </tr>
+         
+        </tbody>
+      </table>
+</div>
