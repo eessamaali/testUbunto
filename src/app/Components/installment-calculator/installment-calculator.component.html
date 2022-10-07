@@ -34,8 +34,11 @@
             </option>
             </select>
         </div>
-       <button type="button" (click)="onCalc()" class="btn btn-primary" [disabled]="numberOfInstallment==0 || errorMessage">Calculate the Installment</button>
-    </form>
+       <!-- <button type="button" (click)="onCalc(gross,numberOfInstallment)" class="btn btn-primary" [disabled]="numberOfInstallment==0 || errorMessage">Calculate the Installment</button> -->
+       <button type="button" (click)="calcInstallment()" class="btn btn-primary" [disabled]="numberOfInstallment==0 || errorMessage">Calculate the Installment</button>
+    
+    
+      </form>
 
     <!-- table to display installments details -->
     <table class="table table-bordered table-responsive">
@@ -51,12 +54,12 @@
         </thead>
         <tbody>
           <tr>
-            <th scope="row">{{gross | currency}}</th>
+            <th scope="row">${{gross }}</th>
             <td>{{numberOfInstallment}}</td>
-            <td>{{firstInstallment | currency}}</td>
-            <td>{{secondInstallment | currency}}</td>
-            <td>{{thirdInstallment | currency}}</td>
-            <td>{{fourthInstallment | currency}}</td>
+            <td>{{result.installment1 | currency}}</td>
+            <td>{{result.installment2 | currency}}</td>
+            <td>{{result.installment3 | currency}}</td>
+            <td>{{result.installment4 | currency}}</td>
           </tr>
          
         </tbody>
